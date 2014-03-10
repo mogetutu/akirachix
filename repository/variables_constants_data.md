@@ -11,8 +11,8 @@ Question 2
 
 Which one of these variables has an illegal name?
 
-a) $my-Var
-b) $my_Var
+a) $my-Var  
+b) $my_Var  
 c) $myVar
 
 Question 3
