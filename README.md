@@ -12,5 +12,5 @@ AkiraChix PHP Exam Repo
 9. [Functions](repository/functions.md)
 10. [Files](repository/files.md)
 11. [Forms](repository/forms.md)
-12. [MySQL](repository/mysql.md)
-13. [Object Oriented Programming](repository/oop.md)
+12. [Object Oriented Programming](repository/oop.md)
+13. [MySQL](repository/mysql.md)
