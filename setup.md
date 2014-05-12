@@ -1,4 +1,6 @@
-//Check if stuff is running
+Check if stuff is running
+---
+
 ```bash
 
 service apache2 status
@@ -6,7 +8,9 @@ service apache2 status
 service mysql status
 ```
 
-// Check Version of things
+Check Version of things
+---
+
 ```bash
 
 php -v (5.4+)
