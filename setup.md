@@ -77,3 +77,26 @@ Install Phpmyadmin
 ```bash
 sudo apt-get update && sudo apt-get install phpmyadmin
 ```
+
+Configure Phpmyadmin
+---
+```bash
+sudo subl /etc/apache2/apache2.conf
+```
+
+After the installation has completed, add phpmyadmin to the apache configuration.
+
+``
+sudo subl /etc/apache2/apache2.conf
+``
+
+Add the phpmyadmin config to the file.
+
+``
+Include /etc/phpmyadmin/apache.conf
+```
+
+Restart apache:
+```bash
+sudo service apache2 restart
+```
