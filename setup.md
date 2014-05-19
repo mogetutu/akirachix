@@ -64,3 +64,12 @@ sudo add-apt-repository ppa:ondrej/php5
 
 sudo apt-get update && sudo apt-get dist-upgrade
 ```
+
+Are you php files being downloaded?
+---
+
+```bash
+
+sudo apt-get install libapache2-mod-php5
+
+```
