@@ -86,13 +86,13 @@ sudo subl /etc/apache2/apache2.conf
 
 After the installation has completed, add phpmyadmin to the apache configuration.
 
-``
+```
 sudo subl /etc/apache2/apache2.conf
-``
+```
 
 Add the phpmyadmin config to the file.
 
-``
+```
 Include /etc/phpmyadmin/apache.conf
 ```
 
