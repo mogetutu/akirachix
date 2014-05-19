@@ -105,30 +105,6 @@ Forgot MySQL Password
 
 [Follow the instructions on this link](https://help.ubuntu.com/community/MysqlPasswordReset)
 
-Tag/tag.png
-
-Content Cleanup Required
-This article should be cleaned-up to follow the content standards in the Wiki Guide. More info...
-
-Please do not make any edits to this article. Its contents are currently under review and being merged with the Ubuntu Server Guide. To find the Ubuntu Server Guide related to your specific version, please go to:
-
-https://help.ubuntu.com/ and click on Ubuntu Server Guide
-
-Why are you looking at this wiki page?
-Are you looking at this page because you cannot access the mysql server installed on your pc/server when you were trying to see if it works well? Or do you receive error messages like the following? :
-
-
-ERROR 1045: Access denied for user: 'root@localhost' (Using
-password: NO)
-or
-
-
-ERROR 1045: Access denied for user: 'root@localhost' (Using
-password: YES)
-To resolve this problem ,a fast and always working way is the "Password Resetting" .
-
-How can I reset my MySQL password?
-IconsPage/warning.png Following this procedure, you will disable access control on the MySQL server. All connexions will have a root access. It is a good thing to unplug your server from the network or at least disable remote access.
 
 To reset your mysqld password just follow these instructions :
 
