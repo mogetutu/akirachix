@@ -69,7 +69,11 @@ Are you php files being downloaded?
 ---
 
 ```bash
-
 sudo apt-get install libapache2-mod-php5
+```
 
+Install Phpmyadmin
+---
+```bash
+sudo apt-get update && sudo apt-get install phpmyadmin
 ```
