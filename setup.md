@@ -100,3 +100,9 @@ Restart apache:
 ```bash
 sudo service apache2 restart
 ```
+
+Forgot MySQL Password
+
+```
+https://help.ubuntu.com/community/MysqlPasswordReset
+```
