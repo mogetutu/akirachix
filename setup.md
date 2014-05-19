@@ -19,12 +19,12 @@ Finish up install MySQL setup
 sudo /usr/bin/mysql_secure_installation
 ```
 
-The prompt will ask you for your current root password. 
+The prompt will ask you for your current root password.
 
 Type it in.
 
 ```bash
-Enter current password for root (enter for none): 
+Enter current password for root (enter for none):
 OK, successfully used password, moving on...
 ```
 
@@ -104,5 +104,5 @@ sudo service apache2 restart
 Forgot MySQL Password
 
 ```
-(Follow the instructions on this link) [https://help.ubuntu.com/community/MysqlPasswordReset]
+[Follow the instructions on this link] (https://help.ubuntu.com/community/MysqlPasswordReset)
 ```
