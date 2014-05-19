@@ -103,6 +103,4 @@ sudo service apache2 restart
 
 Forgot MySQL Password
 
-```
-[Follow the instructions on this link] (https://help.ubuntu.com/community/MysqlPasswordReset)
-```
+[Follow the instructions on this link](https://help.ubuntu.com/community/MysqlPasswordReset)
