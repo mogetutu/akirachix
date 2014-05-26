@@ -9,7 +9,7 @@ class Database
   protected $password;
   protected $database_name;
 
-  function __construct($database_name, $server = 'localhost', $username = 'root', $password = '')
+  function __construct($database_name = 'akirachix', $server = 'localhost', $username = 'root', $password = '')
   {
     $this->database_name = $database_name;
     $this->server        = $server;
