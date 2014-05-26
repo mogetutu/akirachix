@@ -21,3 +21,5 @@ Implement
 
 1. A HTML Form with Firstname, Lastname Age, Phone with name `index.php`
 2. Implement a file `array-list.php` with an array `$friends` that is an assosiative array with keys `names, age, phone`
+3. Loop over the array in `index.php` requiring `array_list.php` at the top of the document.
+4. Use a table preferably for html formatting.
