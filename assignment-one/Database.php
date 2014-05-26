@@ -9,7 +9,14 @@ class Database
   protected $password;
   protected $database_name;
 
-  function __construct($database_name = 'akirachix', $server = 'localhost', $username = 'root', $password = '')
+  /**
+   * Constructor
+   * @param string $database_name default database table 'akirachix'
+   * @param string $password      default blank password
+   * @param string $username      default 'root'
+   * @param string $server        default 'localhost'
+   */
+  function __construct($database_name = 'akirachix', $password = '', $username = 'root', $server = 'localhost')
   {
     $this->database_name = $database_name;
     $this->server        = $server;
@@ -18,16 +25,22 @@ class Database
   }
 
   /**
-   * Create Database Connection
+   * MySQLi connection
+   * @return connection object
    */
   public function connection()
   {
     return new mysqli($this->server, $this->username, $this->password, $this->database_name);
   }
 
-  public function db_query($sql)
+  /**
+   * Database Querying Function
+   * @param  string $query SQL Query
+   * @return array        Array of records from Database query
+   */
+  public function db_query($query)
   {
-    if ($result = $this->connection()->query($sql))
+    if ($result = $this->connection()->query($query))
     {
 
       /* fetch object array */
@@ -46,10 +59,12 @@ class Database
 }
 
 // Example Below
+// Assumes database with name 'akirachix' exists with username as 'root' and password as ''
+// Database
 
 /**
 * require 'Database.php'
-* $db = new Database('akirachix');
+* $db = new Database('database_name');
 * $result = $db->db_query('select * from friends');
 *
 * foreach ($result as $item) {
