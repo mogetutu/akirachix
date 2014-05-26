@@ -48,7 +48,7 @@ class Database
 // Example Below
 
 /**
-*
+* require 'Database.php'
 * $db = new Database('akirachix');
 * $result = $db->db_query('select * from friends');
 *
