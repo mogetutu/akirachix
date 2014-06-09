@@ -14,19 +14,9 @@ class Application
     // @see http://www.php.net/manual/en/pdostatement.fetch.php
     $options = array(PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_OBJ, PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING);
 
-
-    $dsn      = DB_TYPE.':dbname='.DATABASE.';host='.DB_HOST;
-    $user     = DB_USER;
-    $password = DB_PASSWORD;
-    $options  = [PDO::ATTR_DEFAULT_FETCH_MODE =>  PDO::FETCH_OBJ];
-
-    try {
-        $this->db = new PDO($dsn, $user, $password, $options);
-    } catch (PDOException $e) {
-        echo 'Connection failed: ' . $e->getMessage();
-    }
     // generate a database connection, using the PDO connector
     // @see http://net.tutsplus.com/tutorials/php/why-you-should-be-using-phps-pdo-for-database-access/
+    $this->db = new PDO(DB_TYPE . ':host=' . DB_HOST . ';dbname=' . DB_NAME, DB_USER, DB_PASS, $options);
   }
 
   public function index()
