@@ -12,6 +12,6 @@ class Friend
   // Retrieving all friends
   public function all_friends()
   {
-    return $this->db->db_query('SELECT name, phone FROM friends');
+    return $this->db->query('SELECT name, phone FROM friends');
   }
 }
