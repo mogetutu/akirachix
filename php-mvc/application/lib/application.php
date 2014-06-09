@@ -16,7 +16,7 @@ class Application
 
     // generate a database connection, using the PDO connector
     // @see http://net.tutsplus.com/tutorials/php/why-you-should-be-using-phps-pdo-for-database-access/
-    $this->db = new PDO(DB_TYPE . ':host=' . DB_HOST . ';dbname=' . DB_NAME, DB_USER, DB_PASS, $options);
+    $this->db = new PDO(DB_TYPE . ':host=' . DB_HOST . ';dbname=' . DATABASE, DB_USER, DB_PASSWORD, $options);
   }
 
   public function index()
