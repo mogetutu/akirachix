@@ -5,13 +5,15 @@
 			<tr>
 			<th>Names</th>
 			<th>Phone Number</th>
+			<th>Tax</th>
 		</tr>
 		</thead>
 	<tbody>
 		<?php foreach ($friends as $friend): ?>
 		<tr>
-				<td><?=$friend->name?></td>
-				<td><?=$friend->phone?></td>
+				<td><?= $friend->name; ?></td>
+				<td><?= $friend->phone; ?></td>
+				<td><?= $tax->vat(); ?></td>
 		<tr>
 		<?php endforeach ?>
 	</tbody>
