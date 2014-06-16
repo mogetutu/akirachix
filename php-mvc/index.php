@@ -3,7 +3,11 @@
 require './application/config/config.php';
 
 // Load models
-require './application/models/friend.php';
+function __autoload($class_name)
+{
+  include_once './application/models/' . $class_name . '.php';
+}
+
 
 // Load the application
 require './application/lib/application.php';
@@ -11,4 +15,4 @@ require './application/lib/application.php';
 // Run Application
 $app = new Application();
 
-$app->index();
+$app->splitUrl();
