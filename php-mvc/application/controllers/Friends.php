@@ -6,4 +6,8 @@
 class Friends extends Controller
 {
 
+  public function all()
+  {
+    return 'all Friends';
+  }
 }
