@@ -3,7 +3,7 @@
 /**
 * Friends Controller
 */
-class Friends extend Controller
+class Friends extends Controller
 {
 
 }
