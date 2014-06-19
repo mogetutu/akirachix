@@ -8,11 +8,11 @@ function __autoload($class_name)
   include_once './application/models/' . $class_name . '.php';
 }
 
-
 // Load the application
+require './application/lib/controller.php';
 require './application/lib/application.php';
 
 // Run Application
 $app = new Application();
 
-$app->splitUrl();
+$app;

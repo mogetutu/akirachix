@@ -9,6 +9,18 @@ class Application
   public $action;
   public $variable;
 
+  public function __construct()
+  {
+    // Load SplitUrl
+    $this->splitUrl();
+    // Require Controller Class as per first uri segement == url[0]
+    require './application/controllers/'.$this->controller.'.php';
+    // Create an Object of the loaded Class/Controller
+    $object = new $this->controller;
+    // Access method requested by user == url[1] / $this->action
+    var_dump($object->{$this->action}());
+  }
+
 
   public function splitUrl()
   {
