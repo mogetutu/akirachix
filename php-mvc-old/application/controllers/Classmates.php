@@ -6,6 +6,11 @@
 class Classmates extends Controller
 {
 
+  public function index()
+  {
+    echo "This is the index function";
+  }
+
   function all()
   {
     return "All Classmates";
