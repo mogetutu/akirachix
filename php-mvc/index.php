@@ -8,6 +8,7 @@ require './application/lib/application.php';
 // Create new instance of Application Class
 $app = new Application;
 
+// Run Application
 echo "<pre>";
-var_dump($app->splitUrl());
+var_dump($app);
 echo "</pre>";
