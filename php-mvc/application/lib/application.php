@@ -7,7 +7,13 @@
  */
 class Application
 {
+  public function __construct()
+  {
     $this->splitUrl();
+    // require requested controller
+    require './application/controllers/' . $this->controller . '.php';
+  }
+
   public function splitUrl()
   {
     // Get User Request
