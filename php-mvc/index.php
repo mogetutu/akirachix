@@ -2,13 +2,10 @@
 // Load config file
 require './application/config/config.php';
 
-// Load application.php
+// Load application.php and controller.php
+require './application/lib/controller.php';
 require './application/lib/application.php';
 
 // Create new instance of Application Class
-$app = new Application;
-
 // Run Application
-echo "<pre>";
-var_dump($app);
-echo "</pre>";
+$app = new Application;
