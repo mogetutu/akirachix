@@ -12,6 +12,10 @@ class Application
     $this->splitUrl();
     // require requested controller
     require './application/controllers/' . $this->controller . '.php';
+    // New Instance of requested class
+    $class = new $this->controller;
+    // Method call requested by user
+    $class->{$this->method}();
   }
 
   public function splitUrl()
