@@ -11,6 +11,17 @@
   </head>
   <body>
     <div class="container">
+      <!-- Validation errors go here -->
+      <div class="alert alert-warning alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert">
+          <span aria-hidden="true">&times;</span>
+          <span class="sr-only">Close</span>
+        </button>
+        <?php foreach ($errors->all() as $error): ?>
+          <li>{{ $error }}</li>
+        <?php endforeach ?>
+      </div>
+      <!-- Validation errors end here -->
       @yield('content')
     </div>
 
