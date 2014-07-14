@@ -32,12 +32,28 @@ class UsersController extends \BaseController {
 	 */
 	public function store()
 	{
-		// Capture Form Data
-		$payload    = Input::all();
 		// Format the date of birth to 'Y-m-d'
 		$dob        = Input::get('dob'); // returns and array
 		$datestring = $dob['year'] .'-'. $dob['month'] .'-'. $dob['day'];
-		dd($datestring);
+
+		// Merge new date string back to Input
+		Input::merge(['dob' => $datestring]);
+
+		// Capture Form Data
+		$payload    = Input::all();
+		// Validate data and return errors if any
+		$validation = Validator::make($payload, User::$rules);
+
+		if($validation->passes())
+		{
+			// Save data to database
+			dd('Hooray!!');
+		}
+		else
+		{
+			// Redirect the user back to the form and show them the errors made
+			return Redirect::back()->withErrors($validation);
+		}
 	}
 
 
