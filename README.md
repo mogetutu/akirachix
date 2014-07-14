@@ -14,3 +14,11 @@ AkiraChix PHP Repo
 11. [Forms](exam/forms.md)
 12. [Object Oriented Programming](exam/oop.md)
 13. [MySQL](exam/mysql.md)
+
+PHP Coding Standards
+---
+
+1. https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-1-basic-coding-standard.md
+
+2. https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-2-coding-style-guide.md
+
