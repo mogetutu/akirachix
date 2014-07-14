@@ -19,7 +19,7 @@ class CreateUsersTable extends Migration {
 	    $table->date('dob');
 	    $table->string('gender')->default('Female')->nullable();
 	    $table->string('marital_status');
-	    $table->string('photo');
+	    $table->string('photo')->nullable();
 	    $table->string('country')->default('Kenya')->nullable();
 	    $table->timestamps();
 		});
