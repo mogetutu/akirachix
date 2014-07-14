@@ -12,7 +12,8 @@ class AddPhoneToUsersTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::table('users', function($table){
+		Schema::table('users', function($table)
+		{
 			$table->integer('phone')->unique();
 		});
 	}
