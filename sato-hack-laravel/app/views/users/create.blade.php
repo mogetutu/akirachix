@@ -15,10 +15,10 @@
   <div class="form-group">
     {{ Form::label('Gender')}}
     <div class="radio">
-      <label>{{ Form::radio('male', 'Male') }} Male</label>
+      <label>{{ Form::radio('gender', 'Male') }} Male</label>
     </div>
     <div class="radio">
-      <label>{{ Form::radio('female', 'Female', true) }} Female</label>
+      <label>{{ Form::radio('gender', 'Female', true) }} Female</label>
     </div>
   </div>
   <div class="form-group">
