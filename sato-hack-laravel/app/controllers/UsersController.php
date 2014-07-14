@@ -40,14 +40,18 @@ class UsersController extends \BaseController {
 		Input::merge(['dob' => $datestring]);
 
 		// Capture Form Data
-		$payload    = Input::all();
+		$payload    = Input::except('_token');
 		// Validate data and return errors if any
 		$validation = Validator::make($payload, User::$rules);
 
 		if($validation->passes())
 		{
 			// Save data to database
-			dd('Hooray!!');
+			$user = User::create($payload);
+			// Redirect user to profile page
+			if ($user) {
+				return Redirect::route('users.show', array($user->id));
+			}
 		}
 		else
 		{
