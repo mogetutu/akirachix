@@ -10,6 +10,7 @@ class UsersController extends \BaseController {
 	public function index()
 	{
 		// Push all tables:users records from database
+		// SQL SELECT * FROM `users`
 		$users = User::all();
 		return View::make('users.index', compact('users'));
 	}
@@ -87,7 +88,11 @@ class UsersController extends \BaseController {
 	 */
 	public function edit($id)
 	{
-		//
+		// Fetch Record
+		$user = User::find($id);
+		$marital_status = array('Single', 'Divorced', 'Engaged', 'Complicated', 'Married');
+
+		return View::make('users.edit', compact('user', 'marital_status'));
 	}
 
 
@@ -99,7 +104,34 @@ class UsersController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		//
+		// Format the date of birth to 'Y-m-d'
+		$dob        = Input::get('dob'); // returns and array
+		$datestring = $dob['year'] .'-'. $dob['month'] .'-'. $dob['day'];
+
+		// Merge new date string back to Input
+		Input::merge(['dob' => $datestring]);
+
+		// Capture Form Data
+		$payload    = Input::except('_token');
+		// Validate data and return errors if any
+		$validation = Validator::make($payload, User::$updateRules);
+
+		if($validation->passes())
+		{
+			// Save data to database
+			// SQL UPDATE `users` SET (values) WHERE `id` = $id
+			$user = User::find($id);
+			$user->update($payload);
+			// Redirect user to profile page
+			if ($user) {
+				return Redirect::route('users.show', array($user->id))->with('alert', 'Record Updated.');
+			}
+		}
+		else
+		{
+			// Redirect the user back to the form and show them the errors made
+			return Redirect::back()->withErrors($validation);
+		}
 	}
 
 

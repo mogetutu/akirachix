@@ -33,4 +33,12 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 		'marital_status' => 'required',
 		'gender'         => 'required',
 	);
+
+	// Update rules
+	public static $updateRules = array(
+		'names'          => 'required',
+		'phone'          => 'required|numeric',
+		'marital_status' => 'required',
+		'gender'         => 'required',
+		);
 }
