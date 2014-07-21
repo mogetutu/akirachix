@@ -109,7 +109,7 @@ class UsersController extends \BaseController {
 		$datestring = $dob['year'] .'-'. $dob['month'] .'-'. $dob['day'];
 
 		// Merge new date string back to Input
-		Input::merge(['dob' => $datestring]);
+		Input::merge(array('dob' => $datestring));
 
 		// Capture Form Data
 		$payload    = Input::except('_token');
