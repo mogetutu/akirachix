@@ -71,7 +71,10 @@ class UsersController extends \BaseController {
 	 */
 	public function show($id)
 	{
+		// Picking the user with set $id
+		// SQL: SELECT * FROM `users` WHERE `id` = $id
 		$user = User::find($id);
+
 		return View::make('users.show', compact('user'));
 	}
 
