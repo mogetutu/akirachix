@@ -104,6 +104,7 @@ class UsersController extends \BaseController {
 	 */
 	public function update($id)
 	{
+		$user = User::find($id);
 		// Format the date of birth to 'Y-m-d'
 		$dob        = Input::get('dob'); // returns and array
 		$datestring = $dob['year'] .'-'. $dob['month'] .'-'. $dob['day'];
@@ -120,7 +121,6 @@ class UsersController extends \BaseController {
 		{
 			// Save data to database
 			// SQL UPDATE `users` SET (values) WHERE `id` = $id
-			$user = User::find($id);
 			$user->update($payload);
 			// Redirect user to profile page
 			if ($user) {
@@ -130,7 +130,7 @@ class UsersController extends \BaseController {
 		else
 		{
 			// Redirect the user back to the form and show them the errors made
-			return Redirect::back()->withErrors($validation);
+			return Redirect::back()->withErrors($validation)->withInput();
 		}
 	}
 
