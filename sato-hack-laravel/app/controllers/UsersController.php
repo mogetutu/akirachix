@@ -9,7 +9,9 @@ class UsersController extends \BaseController {
 	 */
 	public function index()
 	{
-		return View::make('users.index');
+		// Push all tables:users records from database
+		$users = User::all();
+		return View::make('users.index', compact('users'));
 	}
 
 
