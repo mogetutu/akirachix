@@ -5,7 +5,7 @@
     <span aria-hidden="true">&times;</span>
     <span class="sr-only">Close</span>
   </button>
-  @foreach ($errors->all() as $error) ?>
+  @foreach ($errors->all() as $error)
     <li>{{ $error }}</li>
   @endforeach
 </div>
