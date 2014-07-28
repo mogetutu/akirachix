@@ -16,4 +16,5 @@ Route::get('/', function()
 	return View::make('layouts.master');
 });
 
+Route::resource('auth', 'AuthController');
 Route::resource('users', 'UsersController');
