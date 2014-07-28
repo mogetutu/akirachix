@@ -16,7 +16,7 @@
       <th>Names</th>
       <th>Phone</th>
       <th>Gender</th>
-      <th>Actions</th>
+      <th colspan="2">Actions</th>
     </tr>
   </thead>
   <tbody>
@@ -27,6 +27,14 @@
       <td>{{ $user->gender }}</td>
       <td>
         <a href="{{route('users.show', array($user->id))}}" class="btn btn-primary">View</a>
+        <!-- DELETE HTTP REQUEST -->
+        {{Form::model($user, array(
+          'route' => array('users.destroy', $user->id),
+          'method' => 'DELETE'
+          ))
+        }}
+          {{Form::submit('Delete', array('class' => 'btn btn-danger'))}}
+        {{Form::close()}}
       </td>
     </tr>
     @endforeach

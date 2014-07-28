@@ -143,7 +143,9 @@ class UsersController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		//
+		User::destroy($id);
+
+		return Redirect::route('users.index')->with('alert', 'User Deleted');
 	}
 
 
