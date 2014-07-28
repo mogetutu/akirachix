@@ -31,7 +31,20 @@ class AuthController extends \BaseController {
 	 */
 	public function store()
 	{
-		//
+		// Validate for username:unique,users:username and password
+		$validation  = Validator::make($data = Input::all(), User::$signUpRules);
+
+		if($validation->fails()) {
+			return Redirect::route('auth.create')->withErrors($validation)->withInput();
+		}
+
+		// Create user
+		$user = User::create($data);
+
+		// Login user
+		if(Auth::loginUsingId($user->id)) {
+			return Redirect::route('users.index');
+		}
 	}
 
 
