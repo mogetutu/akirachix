@@ -3,6 +3,17 @@
 @section('content')
 <div class="page-header">
   <div class="pull-right">
+    <!-- Check is user is logged in and display logout button -->
+    @if(Auth::check())
+      {{Form::model(Auth::user(),
+        [
+          'route'  => ['auth.destroy', Auth::id()],
+          'method' => 'DELETE'
+        ])
+      }}
+      {{Form::submit('Logout', ['class' => 'btn btn-primary'])}}
+      {{Form::close()}}
+    @endif
     <!-- Create profile button -->
     <a href="{{route('users.create')}}" class="btn btn-default">Create Profile</a>
   </div>
