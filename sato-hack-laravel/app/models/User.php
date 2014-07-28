@@ -22,7 +22,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	 * @var array
 	 */
 	protected $hidden  = array('password', 'remember_token');
-	
+
 	// Allow for mass assignment
 	protected $guarded = array('password', 'remember_token');
 
@@ -40,5 +40,10 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 		'phone'          => 'required|numeric',
 		'marital_status' => 'required',
 		'gender'         => 'required',
+		);
+
+	public static $signUpRules = array(
+		'username' => 'required|unique:users,username',
+		'password' => 'required|min:6',
 		);
 }
