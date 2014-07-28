@@ -29,7 +29,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	// Validation rules here
 	public static $rules = array(
 		'names'          => 'required',
-		'phone'          => 'required|numeric|unique:users',
+		'phone'          => 'required|numeric|min:9|unique:users',
 		'marital_status' => 'required',
 		'gender'         => 'required',
 	);
@@ -37,13 +37,14 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	// Update rules
 	public static $updateRules = array(
 		'names'          => 'required',
-		'phone'          => 'required|numeric',
+		'phone'          => 'required|numeric|min:9',
 		'marital_status' => 'required',
 		'gender'         => 'required',
-		);
+	);
 
+	// Sign Up Rules
 	public static $signUpRules = array(
 		'username' => 'required|unique:users,username',
 		'password' => 'required|min:6',
-		);
+	);
 }
