@@ -39,11 +39,14 @@ class AuthController extends \BaseController {
 		}
 
 		// Create user
-		$user = User::create($data);
+		$user = new User;
+		$user->username = Input::get('username');
+		$user->password = Hash::make(Input::get('password')); // Remember to Hash the password
+		$user->save();
 
 		// Login user
-		if(Auth::loginUsingId($user->id)) {
-			return Redirect::route('users.index');
+		if(Auth::attempt(Input::only(['username', 'password']))) {
+			return Redirect::route('users.edit', [$user->id]);
 		}
 	}
 
