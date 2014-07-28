@@ -9,8 +9,14 @@
 </div>
 
 {{Form::open(['route' => 'auth.store', 'method' => 'POST'])}}
-  {{Form::text('username', null, ['class' => 'form-control'])}}
-  {{Form::password('password', ['class' => 'form-control'])}}
+  <div class="form-group">
+    {{Form::label('Username')}}
+    {{Form::text('username', null, ['class' => 'form-control'])}}
+  </div>
+  <div class="form-group">
+    {{Form::label('Password')}}
+    {{Form::password('password', ['class' => 'form-control'])}}
+  </div>
   {{Form::submit('Sign Up', ['class' => 'btn btn-primary'])}}
 {{Form::close()}}
 @stop
