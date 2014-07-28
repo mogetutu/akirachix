@@ -15,10 +15,10 @@ class CreateUsersTable extends Migration {
 		Schema::create('users', function($table)
 		{
 	    $table->increments('id');
-	    $table->string('names');
-	    $table->date('dob');
+	    $table->string('names')->nullable();
+	    $table->date('dob')->default('1970-01-01');
 	    $table->string('gender')->default('Female')->nullable();
-	    $table->string('marital_status');
+	    $table->string('marital_status')->default(0);
 	    $table->string('photo')->nullable();
 	    $table->string('country')->default('Kenya')->nullable();
 	    $table->timestamps();

@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddPhoneToUsersTable extends Migration {
+class AddRememberTokenToUsersTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -14,7 +14,7 @@ class AddPhoneToUsersTable extends Migration {
 	{
 		Schema::table('users', function($table)
 		{
-			$table->integer('phone')->unique()->nullable();
+			$table->string('remember_token')->nullable();
 		});
 	}
 
@@ -27,7 +27,7 @@ class AddPhoneToUsersTable extends Migration {
 	{
 		Schema::table('users', function($table)
 		{
-		  $table->dropColumn('phone');
+			$table->dropColumn('remember_token');
 		});
 	}
 
