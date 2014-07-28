@@ -92,7 +92,11 @@ class AuthController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		//
+		// Logout user
+		Auth::logout();
+
+		// Redirect user to login page
+		return Redirect::route('auth.index');
 	}
 
 
