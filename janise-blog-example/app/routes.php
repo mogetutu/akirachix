@@ -15,5 +15,6 @@ Route::get('/', function()
 {
 	return View::make('hello');
 });
-
-Route::resource('blog', 'PostsController');
+Route::group(['before' => 'guest'],function(){
+  Route::resource('blog', 'PostsController');
+});
