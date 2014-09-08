@@ -6,7 +6,6 @@ class PostsController extends \BaseController {
    * The layout that should be used for responses.
    */
   protected $layout = 'blog';
-
 	/**
 	 * Display a listing of posts
 	 *
