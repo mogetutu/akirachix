@@ -83,8 +83,8 @@ class UsersController extends \BaseController {
 		// Picking the user with set $id
 		// SQL: SELECT * FROM `users` WHERE `id` = $id
 		$user = User::find($id);
-
-		return View::make('users.show', compact('user'));
+		$marital_status = array('Single', 'Divorced', 'Engaged', 'Complicated', 'Married');
+		return View::make('users.show', compact('user', 'marital_status'));
 	}
 
 
