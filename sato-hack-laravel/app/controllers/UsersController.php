@@ -67,7 +67,7 @@ class UsersController extends \BaseController {
 		else
 		{
 			// Redirect the user back to the form and show them the errors made
-			return Redirect::back()->withErrors($validation);
+			return Redirect::back()->withErrors($validation)->withInput();
 		}
 	}
 
