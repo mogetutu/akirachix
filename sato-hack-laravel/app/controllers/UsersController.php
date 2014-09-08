@@ -11,7 +11,15 @@ class UsersController extends \BaseController {
 	{
 		// Push all tables:users records from database
 		// SQL SELECT * FROM `users`
-		$users = User::all();
+		$users = User::paginate(User::$pages);
+		return View::make('users.index', compact('users'));
+	}
+
+
+	public function search()
+	{
+		$name  = Input::get('names');
+		$users = User::where('names', 'LIKE', "%$name%")->paginate(User::$pages);
 		return View::make('users.index', compact('users'));
 	}
 

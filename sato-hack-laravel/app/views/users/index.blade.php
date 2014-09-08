@@ -19,7 +19,19 @@
   </div>
   <h2>Users</h2>
 </div>
-
+<!-- Search Form -->
+<div class="pull-right">
+  {{Form::open(['route' => 'users.search', 'method' => 'GET', 'class' => 'form-inline'])}}
+    <div class="form-group">
+      {{Form::text('names', null, ['class' => 'form-control'])}}
+    </div>
+    {{Form::submit('Search', ['class' => 'btn btn-default'])}}
+    <a href="/users" class="btn btn-default">Cancel</a>
+  {{Form::close()}}
+</div>
+<br>
+<br>
+<!-- Search Form ends here -->
 <!-- Table with listing of users -->
 <table class="table">
   <thead>

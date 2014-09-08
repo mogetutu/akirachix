@@ -17,4 +17,7 @@ Route::get('/', function()
 });
 
 Route::resource('auth', 'AuthController');
+Route::get('/users/females', 'UsersController@allFemales');
+Route::get('/users/search',
+  array('as' => 'users.search', 'uses' => 'UsersController@search'));
 Route::resource('users', 'UsersController');
