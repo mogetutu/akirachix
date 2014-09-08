@@ -29,6 +29,9 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	// Allow for mass assignment
 	protected $guarded = array('password', 'remember_token');
 
+	// Pagination
+	public static $pages = 3;
+
 	// Validation rules here
 	public static $rules = array(
 		'names'          => 'required',
