@@ -151,9 +151,16 @@ class UsersController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
+
+		// DELETE FROM `users` WHERE `id` = $id
 		User::destroy($id);
 
 		return Redirect::route('users.index')->with('alert', 'User Deleted');
+	}
+
+	public function allFemales()
+	{
+		return User::where('gender','=', 'Female')->delete();
 	}
 
 
