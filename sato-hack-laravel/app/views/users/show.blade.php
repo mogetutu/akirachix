@@ -18,6 +18,6 @@
 <p class="lead">Phone: {{ $user->phone }}</p>
 <p class="lead">Country: {{ $user->country }}</p>
 <p class="lead">Date of Birth: {{ $user->dob }}</p>
-<p class="lead">Status: {{ $user->marital_status }}</p>
+<p class="lead">Status: {{ $marital_status[$user->marital_status] }}</p>
 <p class="lead">Photo: {{ $user->photo }}</p>
 @stop
