@@ -15,7 +15,8 @@ class TodosController extends \BaseController {
 	 */
 	public function index()
 	{
-		return View::make('todos.index');
+		$todos = Auth::user()->todos;
+		return View::make('todos.index', compact('todos'));
 	}
 
 
@@ -37,7 +38,10 @@ class TodosController extends \BaseController {
 	 */
 	public function store()
 	{
-		//
+		$todo = new Todo(['task' => Input::get('task')]);
+		$createdTodo = Auth::user()->todos()->save($todo);
+		if($createdTodo) return Redirect::back()->with('message', 'Todo Added.');
+		return Redirect::back()->with('message', 'Problem adding todo.');
 	}
 
 
@@ -85,7 +89,13 @@ class TodosController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		//
+		$todo = Todo::find($id);
+		if($todo->user == Auth::user())
+		{
+			Todo::destroy($id);
+			return Redirect::back()->with('message', 'Todo Delete');
+		}
+		return Redirect::back()->with('message', 'Todo not found.');
 	}
 
 
