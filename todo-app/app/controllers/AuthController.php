@@ -11,7 +11,6 @@ class AuthController extends \BaseController {
 		return View::make('auth.signin');
 	}
 
-
 	/**
 	 * Load Sign Up Page
 	 * @return View
@@ -20,7 +19,6 @@ class AuthController extends \BaseController {
 	{
 		return View::make('auth.signup');
 	}
-
 
 	/**
 	 * Store a newly created resource in storage.
