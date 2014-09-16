@@ -38,7 +38,7 @@ class TodosController extends \BaseController {
 	 */
 	public function store()
 	{
-		$todo = new Todo(['task' => Input::get('task')]);
+		$todo        = new Todo(['task' => Input::get('task')]);
 		$createdTodo = Auth::user()->todos()->save($todo);
 		if($createdTodo) return Redirect::back()->with('message', 'Todo Added.');
 		return Redirect::back()->with('message', 'Problem adding todo.');
