@@ -17,6 +17,7 @@ Route::get('/', function()
 });
 
 // Authentication Routes
+Route::resource('auth', 'AuthController');
 Route::get('login', 'AuthController@index');
 Route::post('login', ['as' => 'auth.login', 'uses' => 'AuthController@login']);
 Route::get('logout', ['as' => 'auth.logout', 'uses' => 'AuthController@logout']);
