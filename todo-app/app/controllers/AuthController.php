@@ -36,7 +36,7 @@ class AuthController extends \BaseController {
       $user->password = Hash::make(Input::get('password'));
       $user->save();
 
-      return Redirect::to('auth.login')
+      return Redirect::route('auth.login')
                       ->with('message', 'Account Created, Please login');
     }
     return Redirect::back()->withErrors($validation)->withInput();
