@@ -2,9 +2,9 @@
 
 class TodosController extends \BaseController {
 
+
 	public function __construct()
 	{
-		// Filter users who are not signed in
 		$this->beforeFilter('auth');
 	}
 
@@ -15,7 +15,14 @@ class TodosController extends \BaseController {
 	 */
 	public function index()
 	{
-		$todos = Auth::user()->todos;
+		$todos = Todo::all();
+		return View::make('todos.index', compact('todos'));
+	}
+
+	public function search()
+	{
+		$search = Input::get('search');
+		$todos = Todo::where('todo', 'LIKE', "%$search%")->get();
 		return View::make('todos.index', compact('todos'));
 	}
 
@@ -27,7 +34,7 @@ class TodosController extends \BaseController {
 	 */
 	public function create()
 	{
-		//
+		return View::make('todos.create');
 	}
 
 
@@ -38,65 +45,19 @@ class TodosController extends \BaseController {
 	 */
 	public function store()
 	{
-		$todo        = new Todo(['task' => Input::get('task')]);
-		$createdTodo = Auth::user()->todos()->save($todo);
-		if($createdTodo) return Redirect::back()->with('message', 'Todo Added.');
-		return Redirect::back()->with('message', 'Problem adding todo.');
-	}
-
-
-	/**
-	 * Display the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function show($id)
-	{
-		//
-	}
-
-
-	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
-	{
-		//
-	}
-
-
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function update($id)
-	{
-		//
-	}
-
-
-	/**
-	 * Remove the specified resource from storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function destroy($id)
-	{
-		$todo = Todo::find($id);
-		if($todo->user == Auth::user())
+		$data = ['todo' => Input::get('todo')];
+		$validation = Validator::make($data, ['todo' => 'required']);
+		if($validation->passes())
 		{
-			Todo::destroy($id);
-			return Redirect::back()->with('message', 'Todo Delete');
+			$todo        = new Todo($data);
+			$user        = Auth::user();
+			$createdtodo = $user->todos()->save($todo);
+
+			if($createdtodo){
+				return Redirect::route('todos.index')->with('message', 'Todo created.');
+			}
 		}
-		return Redirect::back()->with('message', 'Todo not found.');
+
+		return Redirect::back()->withErrors($validation);
 	}
-
-
 }

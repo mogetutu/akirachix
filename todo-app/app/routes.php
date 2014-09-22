@@ -13,14 +13,20 @@
 
 Route::get('/', function()
 {
-  return View::make('auth.signin');
+	return View::make('master');
 });
 
-// Authentication Routes
-Route::resource('auth', 'AuthController');
-Route::get('login', 'AuthController@index');
-Route::post('login', ['as' => 'auth.login', 'uses' => 'AuthController@login']);
-Route::get('logout', ['as' => 'auth.logout', 'uses' => 'AuthController@logout']);
+// SignUp View
+Route::get('signup', ['as' => 'signup', 'uses'=> 'AuthController@signUp']);
+// Create Account Route
+Route::post('account', ['as' => 'account', 'uses' => 'AuthController@createAccount']);
+// Sign In Route
+Route::get('signin', ['as' => 'signin', 'uses'=> 'AuthController@signIn']);
+// Login Route
+Route::post('login', ['as' => 'login', 'uses' => 'AuthController@login']);
+// Logout
+Route::get('logout', ['as' => 'logout', 'uses' => 'AuthController@logout']);
 
-// Todos Routes has filter in constructor
+// Todos Routes
+Route::get('todos/search', 'TodosController@search');
 Route::resource('todos', 'TodosController');

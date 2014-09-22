@@ -2,61 +2,66 @@
 
 class AuthController extends \BaseController {
 
-	/**
-	 * Load Sign In Page
-	 * @return View
-	 */
-	public function index()
-	{
-		return View::make('auth.signin');
-	}
-
-	/**
-	 * Load Sign Up Page
-	 * @return View
-	 */
-	public function create()
+	// SignUp Screen
+	public function signUp()
 	{
 		return View::make('auth.signup');
 	}
 
-	/**
-	 * Store a newly created resource in storage.
-	 *
-	 * @return Response
-	 */
-	public function store()
+	public function signIn()
 	{
-    $data = Input::all();
-    $validation = Validator::make($data, User::$signUpRules);
-    if($validation->passes())
-    {
-  		$user = new User;
-      $user->username = Input::get('username');
-      $user->password = Hash::make(Input::get('password'));
-      $user->save();
-
-      return Redirect::route('auth.login')
-                      ->with('message', 'Account Created, Please login');
-    }
-    return Redirect::back()->withErrors($validation)->withInput();
+		return View::make('auth.signin');
 	}
 
-  public function login()
-  {
-    $credentials = [
-      'username' => Input::get('username'),
-      'password' => Input::get('password')
-    ];
+	public function login()
+	{
+		$rules = [
+			'username' => 'required|exists:users,username',
+			'password' => 'required'
+		];
+		$data = Input::only(['username', 'password']);
+		$validation = Validator::make($data, $rules);
+		if($validation->passes())
+		{
+			// Create session
+			if(Auth::attempt($data))
+			{
+				return Redirect::route('todos.index');
+			}
 
-    if(Auth::attempt($credentials)) return Redirect::to('todos');
+			return Redirect::back()->with('message', 'Check Username and Password.');
+		}
 
-    return Redirect::back()->withInput()->with('message', 'Check Username and Password');
-  }
+		return Redirect::back()->withErrors($validation);
+	}
 
-  public function logout()
-  {
-    Auth::logout();
-    return Redirect::to('auth');
-  }
+	// Account Creation
+	public function createAccount()
+	{
+		$rules = [
+			'username' => 'required|unique:users,username',
+			'password' => 'required|min:5'
+		];
+		$data = Input::only(['username', 'password']);
+		$validation = Validator::make($data, $rules);
+		if($validation->passes())
+		{
+			$user = new User;
+			$user->username = Input::get('username');
+			$user->password = Hash::make(Input::get('password'));
+			$user->save();
+			// Login User after creating account
+			Auth::login($user);
+
+			return Redirect::route('todos.index');
+		}
+
+		return Redirect::back()->withErrors($validation)->withInput();
+	}
+
+	public function logout()
+	{
+		Auth::logout();
+		return Redirect::to('signin');
+	}
 }

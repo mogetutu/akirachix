@@ -25,15 +25,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 
 	protected $fillable = ['username', 'password'];
 
-	public static $signUpRules = [
-		'username' => 'required|unique:users,username',
-		'password' => 'required|min:5'
-  ];
 
-	/**
-	 * User has many Todo
-	 * @return relation
-	 */
 	public function todos()
 	{
 		return $this->hasMany('Todo');

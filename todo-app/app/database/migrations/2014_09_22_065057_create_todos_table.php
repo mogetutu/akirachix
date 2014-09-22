@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTodoTable extends Migration {
+class CreateTodosTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -14,9 +14,11 @@ class CreateTodoTable extends Migration {
 	{
 		Schema::create('todos', function($table){
 			$table->increments('id');
-			$table->string('task');
+			$table->string('todo');
 			$table->timestamps();
-			$table->softDeletes();
+			// Foreign Key user_id here
+			$table->integer('user_id')->unsigned();
+			$table->foreign('user_id')->references('id')->on('users');
 		});
 	}
 

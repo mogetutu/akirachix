@@ -6,7 +6,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Laravel Todo</title>
+        <title>Laravel Todo Application</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/css/bootstrap.css"/>
@@ -15,8 +15,9 @@
     </head>
     <body>
       <!-- Add your site or application content here -->
+        @include('errors')
         <div class="container">
-          <div class="col-md-6 col-md-offset-3">
+          <div class="col-md-6">
             @yield('content')
           </div>
         </div>
