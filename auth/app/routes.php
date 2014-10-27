@@ -13,25 +13,18 @@
 
 Route::get('/', function()
 {
-  $firstname = 'isaak';
-  $lastname = 'mogetutu';
-  $nickname = 'tutu';
-  $filename = "{$firstname}{$lastname}.pdf";
-  return $filename;
+	return View::make('hello');
 });
 
-Route::get('login', function()
-{
-	return View::make('auth.login');
-});
+// Route for sign up page
+Route::get('signup', 'AuthController@signUpPage');
+Route::post('signup', 'AuthController@signup');
 
-// Authentication Routes
+// Route for login page
 Route::get('login', 'AuthController@loginPage');
 Route::post('login', 'AuthController@login');
-Route::get('signup', 'AuthController@signupPage');
-Route::post('signup', 'AuthController@signup');
+
 Route::get('logout', 'AuthController@logout');
 
-// Blog Routes
-Route::get('posts/search', ['as' => 'posts.search', 'uses' => 'PostController@search']);
-Route::resource('posts', 'PostController');
+Route::resource('profile', 'ProfilesController');
+
