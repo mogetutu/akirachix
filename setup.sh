@@ -1,4 +1,4 @@
-#! /bin/bash
+#!/usr/bin/env bash
 case "$1" in
     lamp)
     	 cd ~
@@ -14,6 +14,9 @@ case "$1" in
     	 echo -e "Setting Up Packages "
 
     	 sleep 1
+    	 
+	 sudo apt-get update
+	 sudo apt-get upgrade -y
 
     	 sudo apt-get install -y software-properties-common
 	 sudo apt-add-repository ppa:ondrej/apache2 -y
@@ -21,14 +24,14 @@ case "$1" in
 
 
 
-    	 echo -e "Installing Curl"
+    	 echo -e "Installing Some Basic Packages"
 
     	 sleep 1
 
-    	 sudo apt-get install curl git
+    	 sudo apt-get install -y build-essential curl dos2unix gcc git libmcrypt4 libpcre3-dev
 
 
-    	  "Update is starting now"
+    	 echo -e "Update is starting now"
     	 sleep 1
 
     	 sudo apt-get update
