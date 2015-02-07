@@ -11,11 +11,13 @@ case "$1" in
 
     	 sleep 1
 
-    	 echo -e "LAMP installation commencing now "
+    	 echo -e "Setting Up Packages "
 
     	 sleep 1
 
-    	 sudo apt-get install lampserver^
+    	 sudo apt-get install -y software-properties-common
+	 sudo apt-add-repository ppa:ondrej/apache2 -y
+	 sudo apt-add-repository ppa:ondrej/php5-5.6 -y
 
 
 
@@ -40,7 +42,33 @@ case "$1" in
     	 echo -e "Installing PHPspecific packages, Composer, MySQL and Git"
     	 sleep 1
 
-    	 sudo apt-get install y php5 apache2 libapache2modphp5 php5curl php5dev php5gd php5mcrypt mysqlserver5.5 php5mysql php5json php5dev gitcore phppear
+    	 sudo apt-get install -y php5-cli php5-dev php-pear \
+	 php5-mysqlnd php5-pgsql php5-sqlite \
+	 php5-apcu php5-json php5-curl php5-gd \
+	 php5-gmp php5-imap php5-mcrypt php5-xdebug \
+	 php5-memcached php5-redis
+	 
+	 echo -e "Making Mcrypt Available"
+	 sleep 1
+	 
+	 ln -s /etc/php5/conf.d/mcrypt.ini /etc/php5/mods-available
+	 sudo php5enmod mcrypt
+	 
+	 echo -e "Installing Mailperse PECL Extension"
+	 sleep 1
+	 
+	 sudo pecl install mailparse
+	 echo "extension=mailparse.so" > /etc/php5/mods-available/mailparse.ini
+	 ln -s /etc/php5/mods-available/mailparse.ini /etc/php5/cli/conf.d/20-mailparse.ini
+	 
+	 echo -e "Setup PHP CLI Settings"
+	 sleep 1
+	 
+	 sudo sed -i "s/error_reporting = .*/error_reporting = E_ALL/" /etc/php5/cli/php.ini
+	 sudo sed -i "s/display_errors = .*/display_errors = On/" /etc/php5/cli/php.ini
+	 sudo sed -i "s/memory_limit = .*/memory_limit = 512M/" /etc/php5/cli/php.ini
+	 sudo sed -i "s/;date.timezone.*/date.timezone = Nairobi/" /etc/php5/cli/php.ini
+	 
 
     	 sudo curl sS https://getcomposer.org/installer | php
     	 sudo mv composer.phar /usr/local/bin/composer
